@@ -1,0 +1,2 @@
+# Online_Image_Gallery
+This is a Django web application that you can Host on your own server and that allows you to store all your images and photos in one place. The application can be accessed from any device with access to a browser and allows uploading new images from any device and viewing all stored images without losing image quality. The purpose is to have access to all your images without taking up memory on your device.
