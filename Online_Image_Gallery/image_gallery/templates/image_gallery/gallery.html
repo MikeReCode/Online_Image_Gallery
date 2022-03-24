@@ -1,0 +1,64 @@
+{% load post_tags%}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title> El Segundo </title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{% static 'image_gallery/styles/second.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  
+</head>
+<body >
+
+  {% with date="1" block_date="nul"%}
+
+    <div class='greed-container'>
+
+        {% for image in images%}
+
+        {% format_date image.exif.CreateDate.val as date%}
+
+        <!-- DATE -->
+        {% if date != block_date %}<div class='fecha'> <h3>{{date}}</h3> </div>{% update_var date as block_date%} {% endif %}
+
+        <div >
+            <!--
+            <img src="{{ i.image.url}}" alt="alternatetext" width="300">
+
+            <p> image : {{ i.exif.CreateDate.val}} {{date}}</p>
+            -->
+            <a href="{% url 'image_gallery:image_detail' image.id %}" class='grid-item'> <img src="{{ image.thumbnail.url}}" alt="alternatetext" > </a>
+
+
+            <br>
+           <div class='grid-item'>
+
+            <a href="{% url 'image_gallery:image_delete' image.id %}">Delete</a>
+           </div>
+            -->
+        </div>
+
+        {% endfor %}
+        {% endwith %}
+        <br>
+
+        <nav class="nav">
+
+          <a href="{% url 'logout' %}?next={% url 'image_gallery:all' %}"class="nav__link" >
+            <i class="material-icons " id="nav__icon">logout</i>
+            <span class="nav__text">Logout</span>
+          </a>
+
+          <a href="{% url 'image_gallery:image_create' %}" class="nav__link">
+            <i class="material-icons " id="nav__icon">add_a_photo</i>
+            <span class="nav__text">Add Foto</span>
+          </a>
+
+        </nav>
+
+    </div>
+
+</body>
+</html>

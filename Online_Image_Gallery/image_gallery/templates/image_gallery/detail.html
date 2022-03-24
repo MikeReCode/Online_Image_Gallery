@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Detail Image </title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  {% if foto.owner == user %}
+
+    <img src="{{ foto.image.url}}" alt="alternatetext" width="100%" >
+
+  {% endif %}
+</body>
+</html>
