@@ -1,2 +1,24 @@
 # Online_Image_Gallery
-This is a Django web application that you can Host on your own server and that allows you to store all your images and photos in one place. The application can be accessed from any device with access to a browser and allows uploading new images from any device and viewing all stored images without losing image quality. The purpose is to have access to all your images without taking up memory on your device.
+This is a Django application that you can host on my own server and help you have all your images and photos saved in one place.
+
+### Necessary libraries:
+
+- Django
+- Pillow
+- django-imagekit
+- django-exiffield
+- django-dotenv
+
+![](readme/11.png) ![](readme/22.png)
+
+The application can be accessed from any device with access to a browser and allows uploading images and viewing them without losing image quality.
+
+![](readme/33.png)
+
+The purpose of this application is to be able to access all your images without taking up space on your device.
+
+![](readme/55.png) ![](readme/66.png)
+
+This application can be accessed by several users, each user will only have access to their own uploaded images and each user will have their images saved in separate directories from the other users.
+
+![](readme/44.png)
