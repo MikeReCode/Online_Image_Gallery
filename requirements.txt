@@ -1,0 +1,15 @@
+asgiref==3.6.0
+choicesenum==0.7.0
+Django==4.1.5
+django-appconf==1.0.5
+django-dotenv==1.4.2
+django-exiffield==3.0.0
+django-imagekit==4.1.0
+gunicorn==20.1.0
+jsonfield==3.1.0
+pilkit==2.0
+Pillow==9.4.0
+six==1.16.0
+sqlparse==0.4.3
+tzdata==2022.7
+mysqlclient==2.1.1

@@ -1,13 +1,35 @@
 # Online_Image_Gallery
-This is a Django application that you can host on my own server and help you have all your images and photos saved in one place.
+This is a Django & Docker application that offers a centralized platform to store and manage all your images and photos. It utilizes three containers: a MySQL container to securely store your data, an Nginx container to handle HTTP requests and serve the application's UI, and an App container that runs the Django application itself. The app provides a simple and intuitive interface to access your photos and images, making it easy to organize and categorize your memories.
 
-### Necessary libraries:
+## Setting up the App
+
+### Prerequisites:
+
+- Clone this project repository to your local machine
+- Docker should be installed on your machine
+
+### Running the Application:
+
+1. Open a terminal in the root directory of the cloned project
+
+2. Run the following command: `docker-compose up --build` 
+- Alternatively, you can run the following command to run the containers in detached mode: `docker-compose up -d --build`
+
+3. Wait for the containers to start.
+
+**Note:** The first time you build the image, the gallery container may fail to run because the MySQL container takes longer to set up. In this case, wait for a few seconds for the MySQL container to fully set up, and then run the gallery container again. Command: `docker start gallery`
+
+
+
+### Libraries used:
 
 - Django
 - Pillow
 - django-imagekit
 - django-exiffield
 - django-dotenv
+- mysqlclient
+- gunicorn
 
 ### Features:
 

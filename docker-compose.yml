@@ -1,0 +1,58 @@
+services:
+  gallery:
+    build: .
+    container_name: gallery
+
+    # in the gunicorn command, "--chdir" is for changing from the current directory "gallery"
+    # in to the the child directory "Online_Image_Gallery" . Note that is a space between the 
+    # first "Online_Image_Gallery" that is used for changing directory and the actual gunicorn command 
+    # "Online_Image_Gallery.wsgi:application"
+    command: >
+      sh -c "python Online_Image_Gallery/manage.py migrate &&
+             gunicorn --chdir Online_Image_Gallery Online_Image_Gallery.wsgi:application --bind=0.0.0.0:8585 --reload"
+             
+    ports:
+    # port 8000 is open if ith necessary to run the Django server for debugging 
+      - 8000:8000
+      - 8585:8585
+
+
+    volumes:
+      - ./Online_Image_Gallery:/gallery/Online_Image_Gallery
+    
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: gallerydb
+      MYSQL_PORT: 3306
+
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-gallery
+    volumes:
+      - gallery-mysql:/var/lib/mysql
+    environment: 
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: gallerydb
+
+    ports:
+      - 3306:3306
+
+  nginx:
+    build: ./nginx
+    container_name: nginx-gallery
+    ports:
+    - "80:80"
+    volumes:
+      - ./Online_Image_Gallery:/Online_Image_Gallery
+    depends_on:
+      - gallery
+
+
+volumes:
+  gallery-mysql:
+  

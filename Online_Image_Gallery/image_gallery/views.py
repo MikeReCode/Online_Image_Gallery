@@ -37,7 +37,7 @@ class AddImages(LoginRequiredMixin, CreateView):
 
         # Create a list with all images names in the database owned by the user
         image_name_list = [i.image.name.split("/")[-1] for i in al]
-        print("LISTA DE IMAGENSE GUARDADAS***", image_name_list, len(image_name_list))
+        print("SAVED IMAGES LIST***", image_name_list, len(image_name_list))
 
         # Check the images one by one if exist in the database , and if it don't exist add the image to database
         for image in images:
