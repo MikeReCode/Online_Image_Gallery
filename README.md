@@ -19,6 +19,9 @@ This is a Django & Docker application that offers a centralized platform to stor
 
 **Note:** The first time you build the image, the gallery container may fail to run because the MySQL container takes longer to set up. In this case, wait for a few seconds for the MySQL container to fully set up, and then run the gallery container again. Command: `docker start gallery`
 
+4. After that the app will be running on `localhost:80`
+
+**Note:** To create a user, currently the only method is by accessing the terminal within the 'gallery' container, navigating to the 'Online_Image_Gallery' folder and executing the command `python manage.py createsuperuser`. This will allow you to access the app using the created user credentials. In the future, a feature for user creation will be added directly in the UI
 
 
 ### Libraries used:
