@@ -23,7 +23,7 @@
         {% format_date image.exif.CreateDate.val as date%}
 
         <!-- DATE -->
-        {% if date != block_date %}<div class='fecha'> <h3>{{date}}</h3> </div>{% update_var date as block_date%} {% endif %}
+        {% if date != block_date %}<div class='fecha btn'> <h3>{{date}}</h3> </div>{% update_var date as block_date%} {% endif %}
 
         <div >
             <!--
