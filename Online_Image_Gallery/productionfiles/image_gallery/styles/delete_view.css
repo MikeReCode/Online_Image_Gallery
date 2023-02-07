@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background: linear-gradient(135deg, rgba(36, 46, 77, 0.9), rgba(137, 126, 121, 0.9));
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    font-size: 1.5em;
+  }
+
+  p{
+    margin-top: 0;
+    color: beige;
+  }
+
+.alert-container{
+    padding: 48px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.btns-container{
+    display: flex;
+    gap: 5px;
+}
+.btn{
+    flex: 1;
+    height: 37px;
+    border-radius: 8px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.btn:hover{
+    background-color: white;
+}
+
+.delete-btn{
+    background-color: rgba(233, 54, 54, 0.801);
+    color: white;
+}
+
+.delete-btn:hover{
+    background-color: rgb(233, 54, 54);
+}
