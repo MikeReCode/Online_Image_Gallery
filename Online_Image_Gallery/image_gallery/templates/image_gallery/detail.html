@@ -1,14 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title> Detail Image </title>
-  <meta charset="UTF-8">
-</head>
-<body>
-  {% if foto.owner == user %}
+{% extends 'image_gallery/base.html' %}
+{% load static %}
 
-    <img src="{{ foto.image.url}}" alt="alternatetext" width="100%" >
+{% block head %}
+  <link rel="stylesheet" href="{% static 'image_gallery/styles/detail.css' %}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+{% endblock head %}
 
-  {% endif %}
-</body>
-</html>
+{% block title %} Image {% endblock title %}
+
+{% block content %}
+
+  <div class="header">
+
+    <a href="{% url 'image_gallery:all' %}" class="nav__link">
+      <i class="material-icons " id="back__icon">arrow_back</i>
+    </a>
+
+    <a href="{% url 'image_gallery:image_delete' foto.id %}" class="nav__link">
+      <i class="material-icons " id="delete__icon">delete</i>
+    </a>
+    
+
+  </div>
+
+  <div class="hero">
+    {% if foto.owner == user %}
+
+      <img src="{{ foto.image.url}}" alt="Image unavailable" >
+
+    {% endif %}
+  </div>
+
+{% endblock content%}
