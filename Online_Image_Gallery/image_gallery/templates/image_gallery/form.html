@@ -1,16 +1,23 @@
+{% extends 'image_gallery/base.html' %}
+{% load static %}
+
+{% block head %}<link rel="stylesheet" href="{% static 'image_gallery/styles/form.css' %}">{% endblock head %}
+{% block title %} ADD IMAGES {% endblock title %}
+
 
 {% block content %}
+  <div class="form-container top-border-gradient">
+    <p>Add Images</p>
 
-  <h1>Add Images</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
 
-  <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="btns-container">
+        <input type="submit" value="Submit" class='btn'>
+        <input type="submit" value="Cancel" class='btn' onclick="window.location.href='{% url 'image_gallery:all' %}';return false;">
+      </div>
+    </form>
+  <div>
 
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Submit">
-    <input type="submit" value="Cancel" onclick="window.location.href='{% url 'image_gallery:all' %}';return false;">
-
-
-  </form>
-
-{% endblock %}
+{% endblock content %}

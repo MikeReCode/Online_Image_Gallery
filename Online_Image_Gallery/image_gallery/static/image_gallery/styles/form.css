@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    background: linear-gradient(135deg, rgba(36, 46, 77, 0.9), rgba(137, 126, 121, 0.9));
+    font-family: "Roboto", helvetica, arial, sans-serif;
+    font-size: 1.5em;
+  }
+
+.form-container{
+    padding: 48px;
+    background-color: rgba(0, 0, 0, 0.15);  
+}
+
+p{
+    margin-top: 0;
+    color: beige;
+    text-align: center;
+    font-size: 30px;
+  }
+
+.btns-container{
+    display: flex;
+    gap: 5px;
+}
+.btn, #custom-file-input::file-selector-button{
+    flex: 1;
+    height: 37px;
+    border-radius: 8px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn:hover{
+    background-color: white;
+}
+
+#custom-file-input::file-selector-button {
+    padding: 0 20px 0 20px;
+}
+#custom-file-input{
+    cursor: pointer;
+}
+
+input{
+    font-size: 20px;
+}
+
+.top-border-gradient {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(to right, #35c3c1, #00d6b7);
+    /* only on top */
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+
