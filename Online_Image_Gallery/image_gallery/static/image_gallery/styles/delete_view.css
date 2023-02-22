@@ -45,3 +45,14 @@ body {
 .delete-btn:hover{
     background-color: rgb(233, 54, 54);
 }
+
+.top-border-gradient {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(to right, #35c3c1, #00d6b7);
+    /* only on top */
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
