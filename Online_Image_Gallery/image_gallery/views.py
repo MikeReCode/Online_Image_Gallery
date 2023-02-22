@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views import View
 from image_gallery.models import Image
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView, DeleteView, DetailView
 from image_gallery.forms import ImageForm
 from django.shortcuts import redirect, get_object_or_404
-
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 class Gallery(LoginRequiredMixin, View):
     def get(self, request):
@@ -69,7 +70,17 @@ class DetailImage(LoginRequiredMixin, DetailView):
     template_name = 'image_gallery/detail.html'
 
     def get(self, request, pk):
-        # x = Second.objects.get(id=pk, owner=self.request.user)
         x = get_object_or_404(Image, id=pk, owner=self.request.user)
         context = {'foto': x, }
         return render(request, self.template_name, context)
+
+
+class RegisterView(UserPassesTestMixin, CreateView):
+    form_class = UserCreationForm
+    template_name = 'image_gallery/register.html'
+
+    def test_func(self):
+        return not self.request.user.is_authenticated # Users who are logged in cannot access the registration page 
+    
+    def handle_no_permission(self):
+        return redirect('image_gallery:all')

@@ -21,8 +21,11 @@ This is a Django & Docker application that offers a centralized platform to stor
 
 4. After that the app will be running on `localhost:80`
 
-**Note:** To create a user, currently the only method is by accessing the terminal within the 'gallery' container, navigating to the 'Online_Image_Gallery' folder and executing the command `python manage.py createsuperuser`. This will allow you to access the app using the created user credentials. In the future, a feature for user creation will be added directly in the UI
+5. Create a new user by clicking `Create user!` button. 
 
+6. Login with the user you just created
+
+**Note:** To create a superuser (admin user), the only method is by accessing the terminal within the 'gallery' container, navigating to the 'Online_Image_Gallery' folder and executing the command `python manage.py createsuperuser`. This will allow you to access the app admin panel `localhost/admin/` using the created superuser credentials.
 
 ### Libraries used:
 

@@ -4,6 +4,11 @@ from exiffield.fields import ExifField
 from exiffield.getters import exifgetter
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
+from django.contrib.auth import get_user_model
+import os
+import shutil
 
 
 def getcurrentusername(instance, filename):
@@ -28,3 +33,28 @@ class Image(models.Model):
 
         self.image.delete()
         super().delete(*args, **kwargs)
+
+
+# This code is used to delete cache and media folders for a particular user when that user is deleted
+User = get_user_model()
+@receiver(pre_delete, sender=User)
+def delete_user_images(sender, instance, **kwargs):
+    folder_path = f"{settings.MEDIA_ROOT}/{instance.id}"
+    cache_folder_path = f"{settings.MEDIA_ROOT}/CACHE/images/{instance.id}"
+
+    # permanently delete the media folder for that particular user and all its content 
+    if os.path.isdir(folder_path):
+        shutil.rmtree(folder_path)
+
+    # permanently delete the cache media folder for that particular user and all its content 
+    if os.path.isdir(cache_folder_path):
+        shutil.rmtree(cache_folder_path)
+
+    # ** permanently delete only the media images and cache images but folder is not deleted **
+    # user_images = Image.objects.filter(owner=instance)
+    # for image in user_images:
+    #     if os.path.isfile(image.image.path):
+    #         os.remove(image.image.path)
+    #     if os.path.isfile(image.thumbnail.path):
+    #         os.remove(image.thumbnail.path)
+    #     image.delete()

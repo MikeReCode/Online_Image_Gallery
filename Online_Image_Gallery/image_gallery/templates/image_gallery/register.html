@@ -1,0 +1,14 @@
+{% extends 'image_gallery/base.html' %}
+{% load static %}
+
+{% block head %}<link rel="stylesheet" href="{% static 'image_gallery/styles/register.css' %}">{% endblock head %}
+{% block title %} REGISTER {% endblock title %}
+
+{% block content %}
+  <h2>Register</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}

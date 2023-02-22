@@ -35,6 +35,6 @@
     <input class='lf--submit' type='submit' value='LOGIN'>
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
-  <!-- need implementation to create a user  -->
-  <a hidden class='lf--forgot' href='#' >Create a user!</a>
+  
+  <a class='lf--forgot' href={% url 'image_gallery:register' %} >Create user!</a>
 {% endblock content%}
